@@ -286,7 +286,7 @@ public class HybridAPIMisusesChecker {
 			if(o instanceof ArgsMismatchedWarning){
 				ArgsMismatchedWarning amw = (ArgsMismatchedWarning) o;
 				if(amw.getNode().equals(this.getNode()) && 
-						amw.getCallInst().iindex == this.getCallInst().iindex &&
+						amw.getCallInst().iIndex() == this.getCallInst().iIndex() &&
 						amw.getTarget().equals(this.getTarget()) && 
 						amw.getParamNum() == this.getParamNum() &&
 						amw.getArgNum() == this.getArgNum())
@@ -403,7 +403,7 @@ public class HybridAPIMisusesChecker {
 		public boolean equals(Object o){
 			if(o instanceof ReturnTypeWarning){
 				ReturnTypeWarning rvtw = (ReturnTypeWarning) o;
-				if(rvtw.getCallInst().iindex == this.getCallInst().iindex &&
+				if(rvtw.getCallInst().iIndex() == this.getCallInst().iIndex() &&
 						rvtw.getNode().equals(this.getNode()) &&
 						rvtw.getTarget().equals(this.getTarget()) &&
 						rvtw.toString().equals(this.toString()))
@@ -441,7 +441,7 @@ public class HybridAPIMisusesChecker {
 		public boolean equals(Object o){
 			if(o instanceof ReturnVoidTypeWarning){
 				ReturnVoidTypeWarning rvtw = (ReturnVoidTypeWarning) o;
-				if(rvtw.getCallInst().iindex == this.getCallInst().iindex &&
+				if(rvtw.getCallInst().iIndex() == this.getCallInst().iIndex() &&
 						rvtw.getNode().equals(this.getNode()) &&
 						rvtw.getTarget().equals(this.getTarget()))
 					return true;
@@ -534,7 +534,7 @@ public class HybridAPIMisusesChecker {
 			if(o instanceof ParamTypeWarning){
 				ParamTypeWarning ptw = (ParamTypeWarning)o;
 				if(ptw.getArgNum() == this.getArgNum() &&
-						ptw.getCallInst().iindex == this.getCallInst().iindex &&
+						ptw.getCallInst().iIndex() == this.getCallInst().iIndex() &&
 						ptw.getNode().equals(this.getNode()) &&
 						ptw.getParamType().equals(this.getParamType()) &&
 						ptw.getArgType().equals(this.getArgType()))

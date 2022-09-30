@@ -128,7 +128,7 @@ public class WalaCGVisualizer {
 		}else{
 			for(SSAInstruction inst : ir.getInstructions()){
 				if(inst != null){
-					label += "(" + inst.iindex + ") " + inst + "\\l";
+					label += "(" + inst.iIndex() + ") " + inst + "\\l";
 				}
 			}
 		}

@@ -47,10 +47,10 @@ public class UriCodecClassModel extends AbstractClassModel{
 			int charsetVar = invokeInst.getUse(2);
 			int throwVar = invokeInst.getUse(3);
 			
-			IBox stringBox = new VarBox(caller, invokeInst.iindex, stringVar);
-			IBox convertPlusBox = new VarBox(caller, invokeInst.iindex, convertPlusVar);
-			IBox charsetBox = new VarBox(caller, invokeInst.iindex, charsetVar);
-			IBox throwBox = new VarBox(caller, invokeInst.iindex, throwVar);
+			IBox stringBox = new VarBox(caller, invokeInst.iIndex(), stringVar);
+			IBox convertPlusBox = new VarBox(caller, invokeInst.iIndex(), convertPlusVar);
+			IBox charsetBox = new VarBox(caller, invokeInst.iIndex(), charsetVar);
+			IBox throwBox = new VarBox(caller, invokeInst.iIndex(), throwVar);
 			
 			if(graph.addEdge(new UriCodecDecodeOpNode(), def, stringBox, convertPlusBox, charsetBox, throwBox)){
 					boxSet.add(stringBox);

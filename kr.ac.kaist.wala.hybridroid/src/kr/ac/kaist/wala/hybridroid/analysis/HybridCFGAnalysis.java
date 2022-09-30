@@ -317,7 +317,7 @@ public class HybridCFGAnalysis {
 					for(SSAInstruction inst : insts){
 						if(inst == null)
 							continue;
-						System.out.println("( " + (inst.iindex) + " ) " + inst + ", " + ((inst == null)? "" : inst.getClass().getName()));
+						System.out.println("( " + (inst.iIndex()) + " ) " + inst + ", " + ((inst == null)? "" : inst.getClass().getName()));
 						if(inst != null && inst instanceof AstGlobalRead && inst.toString().contains("errorRetriever")){
 							AstGlobalRead read = (AstGlobalRead) inst;
 							FieldReference fr = read.getDeclaredField();

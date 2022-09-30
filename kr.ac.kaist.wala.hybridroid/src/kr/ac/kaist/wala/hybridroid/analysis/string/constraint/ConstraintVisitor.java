@@ -179,7 +179,7 @@ final public class ConstraintVisitor implements IBoxVisitor<Set<IBox>> {
 						}else{
 							for (SSAReturnInstruction retInst : getReturnInstructions(target)) {
 								if (retInst.getNumberOfUses() > 0) {
-									VarBox retBox = new VarBox(target, retInst.iindex,
+									VarBox retBox = new VarBox(target, retInst.iIndex(),
 											retInst.getUse(0));
 									if (graph.addEdge(new AssignOpNode(), b, retBox))
 										res.add(retBox);
@@ -246,7 +246,7 @@ final public class ConstraintVisitor implements IBoxVisitor<Set<IBox>> {
 				for(Pair<CGNode, Set<SSAPutInstruction>> p : defSet){
 					CGNode defNode = p.fst();
 					for(SSAPutInstruction defPutInst : p.snd()){
-						VarBox putBox = new VarBox(defNode, defPutInst.iindex, defPutInst.getUse(1));
+						VarBox putBox = new VarBox(defNode, defPutInst.iIndex(), defPutInst.getUse(1));
 						if(graph.addEdge(new AssignOpNode(), b, putBox)){
 							res.add(putBox);
 							assigned = true;
@@ -302,7 +302,7 @@ final public class ConstraintVisitor implements IBoxVisitor<Set<IBox>> {
 						boxes[i] = new ConstBox(node, "", ConstType.STRING_TOP);
 						continue;
 					}
-					VarBox varBox = new VarBox(node, phiInst.iindex, phiInst.getUse(i));
+					VarBox varBox = new VarBox(node, phiInst.iIndex(), phiInst.getUse(i));
 					boxes[i] = varBox;
 				}
 				if(graph.addEdge(new JoinOpNode(), b, boxes)){
@@ -311,7 +311,7 @@ final public class ConstraintVisitor implements IBoxVisitor<Set<IBox>> {
 				}
 			}else if(defInst instanceof SSAConversionInstruction){
 				int use = defInst.getUse(0);
-				VarBox varBox = new VarBox(node, defInst.iindex, use);
+				VarBox varBox = new VarBox(node, defInst.iIndex(), use);
 				if(graph.addEdge(new AssignOpNode(), b, varBox))
 					res.add(varBox);
 			}else if(defInst instanceof SSAArrayLoadInstruction){
@@ -358,7 +358,7 @@ final public class ConstraintVisitor implements IBoxVisitor<Set<IBox>> {
 			CGNode predNode = iPredNode.next();
 			List<SSAInvokeInstruction> callInsts = getCallInstructions(predNode, node);
 			for(SSAInvokeInstruction callInst : callInsts){
-				IBox box = new VarBox(predNode, callInst.iindex, callInst.getUse(index - 1));
+				IBox box = new VarBox(predNode, callInst.iIndex(), callInst.getUse(index - 1));
 				if(graph.addEdge(new AssignOpNode(), b, box))
 					res.add(box);
 			}

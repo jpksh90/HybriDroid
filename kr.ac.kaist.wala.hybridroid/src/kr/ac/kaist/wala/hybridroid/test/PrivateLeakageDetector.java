@@ -410,7 +410,7 @@ public class PrivateLeakageDetector {
 		
 		private SSAAbstractInvokeInstruction findNearestInitInst(IR ir, SSANewInstruction newInst){
 			SSAInstruction[] insts = ir.getInstructions();
-			for(int i = newInst.iindex+1; i < insts.length; i++){
+			for(int i = newInst.iIndex()+1; i < insts.length; i++){
 				SSAInstruction inst = insts[i];
 				if(inst == null)
 					continue;
@@ -497,10 +497,10 @@ public class PrivateLeakageDetector {
 		}
 		
 		private BasicBlockInContext<IExplodedBasicBlock> getBlockForCall(CGNode n, SSAAbstractInvokeInstruction callInst){
-			int callIndex = callInst.iindex;
+			int callIndex = callInst.iIndex();
 			
 			for(BasicBlockInContext<IExplodedBasicBlock> bb : supergraph){
-				if(bb.getNode().equals(n) && bb.getLastInstruction() != null && bb.getLastInstruction().iindex == callIndex)
+				if(bb.getNode().equals(n) && bb.getLastInstruction() != null && bb.getLastInstruction().iIndex() == callIndex)
 					return bb;
 			}
 			
@@ -1651,7 +1651,7 @@ public class PrivateLeakageDetector {
 		
 		private String getVarString(CGNode n, SSAInstruction inst, int var){
 			SymbolTable symTab = n.getIR().getSymbolTable();
-			String[] names = n.getIR().getLocalNames(inst.iindex, var);
+			String[] names = n.getIR().getLocalNames(inst.iIndex(), var);
 			if(names == null || names.length == 0)
 				return var + "";
 			
@@ -1664,7 +1664,7 @@ public class PrivateLeakageDetector {
 		
 		private String getInstString(CGNode n, SSAInstruction inst){
 			IMethod m = n.getMethod();
-			int instIndex = inst.iindex;
+			int instIndex = inst.iIndex();
 			int i = instIndex + 1;
 			for(; i < n.getIR().getInstructions().length; i++){
 				if(n.getIR().getInstructions()[i] == null)

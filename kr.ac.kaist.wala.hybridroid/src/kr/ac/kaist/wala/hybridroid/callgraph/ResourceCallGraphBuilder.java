@@ -179,7 +179,7 @@ public class ResourceCallGraphBuilder extends ZeroXCFABuilder {
 				SymbolTable symTab = node.getIR().getSymbolTable();
 				int paramVar = instruction.getUse(1);
 				int defVar = instruction.getDef();
-				SSACheckCastInstruction ccInst = getCastingInstructionOf(node.getIR().getInstructions(), instruction.iindex, defVar);
+				SSACheckCastInstruction ccInst = getCastingInstructionOf(node.getIR().getInstructions(), instruction.iIndex(), defVar);
 				
 				if(symTab.isIntegerConstant(paramVar)){
 					int v = symTab.getIntValue(paramVar);
@@ -194,13 +194,13 @@ public class ResourceCallGraphBuilder extends ZeroXCFABuilder {
 								return;
 							}
 
-							ResourceInstanceKey rik = new ResourceInstanceKey(node, klass, instruction.iindex, v);
+							ResourceInstanceKey rik = new ResourceInstanceKey(node, klass, instruction.iIndex(), v);
 							system.newConstraint(builder.getPointerKeyForLocal(node, defVar), rik);
 						}
 						return;
 					}else{
 						//currently, if the return of findViewById is not casted, just deal with it as View.
-						ResourceInstanceKey rik = new ResourceInstanceKey(node, cha.lookupClass(TypeReference.find(ClassLoaderReference.Primordial, "Landroid/view/View")), instruction.iindex, v);
+						ResourceInstanceKey rik = new ResourceInstanceKey(node, cha.lookupClass(TypeReference.find(ClassLoaderReference.Primordial, "Landroid/view/View")), instruction.iIndex(), v);
 						system.newConstraint(builder.getPointerKeyForLocal(node, defVar), rik);
 						return;
 					}
@@ -216,12 +216,12 @@ public class ResourceCallGraphBuilder extends ZeroXCFABuilder {
 								IClass klass = cha.lookupClass(tr);
 								if(klass == null)
 									Assertions.UNREACHABLE(tr +" does not exist.");
-								ResourceInstanceKey rik = new ResourceInstanceKey(node, cha.lookupClass(tr), instruction.iindex, v);
+								ResourceInstanceKey rik = new ResourceInstanceKey(node, cha.lookupClass(tr), instruction.iIndex(), v);
 								system.newConstraint(builder.getPointerKeyForLocal(node, defVar), rik);
 							}
 							return;
 						}else{
-							ResourceInstanceKey rik = new ResourceInstanceKey(node, cha.lookupClass(TypeReference.find(ClassLoaderReference.Primordial, "Landroid/view/View")), instruction.iindex, v);
+							ResourceInstanceKey rik = new ResourceInstanceKey(node, cha.lookupClass(TypeReference.find(ClassLoaderReference.Primordial, "Landroid/view/View")), instruction.iIndex(), v);
 							system.newConstraint(builder.getPointerKeyForLocal(node, defVar), rik);
 							return;
 						}
@@ -254,7 +254,7 @@ public class ResourceCallGraphBuilder extends ZeroXCFABuilder {
 						if(klass == null)
 							Assertions.UNREACHABLE(tr +" does not exist in this application.");
 						
-						ResourceInstanceKey rik = new ResourceInstanceKey(node, klass, instruction.iindex, v);
+						ResourceInstanceKey rik = new ResourceInstanceKey(node, klass, instruction.iIndex(), v);
 						system.newConstraint(builder.getPointerKeyForLocal(node, receiverVar), rik);
 					}else{
 						SSAInstruction defInst = node.getDU().getDef(receiverVar);
@@ -405,7 +405,7 @@ public class ResourceCallGraphBuilder extends ZeroXCFABuilder {
 							if(klass == null)
 								Assertions.UNREACHABLE(wtr.getObject() +" does not exist.");
 							
-							ResourceInstanceKey rik = new ResourceInstanceKey(node, klass, instruction.iindex, v);
+							ResourceInstanceKey rik = new ResourceInstanceKey(node, klass, instruction.iIndex(), v);
 							
 							try{
 								if(!system.isImplicit(pk))

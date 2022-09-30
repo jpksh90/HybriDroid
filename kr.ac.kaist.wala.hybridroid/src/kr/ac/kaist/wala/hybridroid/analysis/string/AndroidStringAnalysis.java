@@ -393,7 +393,7 @@ public class AndroidStringAnalysis implements StringAnalysis{
 							}
 						}
 
-						putHotspotDesciptor(hotspot, new HotspotDescriptor(node, inst.iindex, nBox, rpSet, upSet));
+						putHotspotDesciptor(hotspot, new HotspotDescriptor(node, inst.iIndex(), nBox, rpSet, upSet));
 					}
 				}
 			}

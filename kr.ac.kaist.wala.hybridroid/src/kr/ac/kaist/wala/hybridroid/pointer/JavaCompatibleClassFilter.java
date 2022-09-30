@@ -184,7 +184,7 @@ public class JavaCompatibleClassFilter implements TypeFilter {
 	public boolean equals(Object o){
 		if(o instanceof JavaCompatibleClassFilter){
 			JavaCompatibleClassFilter f = (JavaCompatibleClassFilter) o;
-			if(f.caller.equals(caller) && f.inst.iindex == inst.iindex)// && f.target.equals(target))
+			if(f.caller.equals(caller) && f.inst.iIndex() == inst.iIndex())// && f.target.equals(target))
 				return true;
 		}
 		return false;

@@ -53,7 +53,7 @@ public class StringBuilderClassModel extends AbstractClassModel{
 				SSAInvokeInstruction invokeInst) {
 			Set<IBox> boxSet = new HashSet<IBox>();
 			int useVar = invokeInst.getUse(0);
-			IBox use = new VarBox(caller, invokeInst.iindex, useVar);
+			IBox use = new VarBox(caller, invokeInst.iIndex(), useVar);
 			if(graph.addEdge(new ToStringOpNode(), def, use))
 					boxSet.add(use);
 			return boxSet;
@@ -76,8 +76,8 @@ public class StringBuilderClassModel extends AbstractClassModel{
 			Set<IBox> boxSet = new HashSet<IBox>();
 			int fstUseVar = invokeInst.getUse(0);
 			int sndUseVar = invokeInst.getUse(1);
-			IBox fstUse = new VarBox(caller, invokeInst.iindex, fstUseVar);
-			IBox sndUse = new VarBox(caller, invokeInst.iindex, sndUseVar);
+			IBox fstUse = new VarBox(caller, invokeInst.iIndex(), fstUseVar);
+			IBox sndUse = new VarBox(caller, invokeInst.iIndex(), sndUseVar);
 			if(graph.addEdge(new AppendOpNode(), def, fstUse, sndUse)){
 					boxSet.add(fstUse);
 					boxSet.add(sndUse);
@@ -120,7 +120,7 @@ public class StringBuilderClassModel extends AbstractClassModel{
 				SSAInvokeInstruction invokeInst) {
 			Set<IBox> boxSet = new HashSet<IBox>();
 			int useVar = invokeInst.getUse(1);
-			IBox use = new VarBox(caller, invokeInst.iindex, useVar);
+			IBox use = new VarBox(caller, invokeInst.iIndex(), useVar);
 			if(graph.addEdge(new AssignOpNode(), def, use))
 					boxSet.add(use);
 			

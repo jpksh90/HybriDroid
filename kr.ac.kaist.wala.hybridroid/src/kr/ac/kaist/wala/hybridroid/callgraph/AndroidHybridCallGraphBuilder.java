@@ -610,7 +610,7 @@ public class AndroidHybridCallGraphBuilder extends
 			SSAGetInstruction getInst = (SSAGetInstruction)defInst;
 			FieldReference F = getInst.getDeclaredField();
 			int objectF = getInst.getUse(0);
-			for(int index = defInst.iindex-1; index > -1; index--){
+			for(int index = defInst.iIndex()-1; index > -1; index--){
 				SSAInstruction targetInst = insts[index];
 				if(targetInst != null && targetInst instanceof SSAPutInstruction){
 					SSAPutInstruction putInst = (SSAPutInstruction)targetInst;
@@ -654,7 +654,7 @@ public class AndroidHybridCallGraphBuilder extends
 			
 			String msg = "-------\n";
 			msg += "# caller: " + node +"\n";
-			msg += "# instruction: " + "(" + inst.iindex + ") " + inst +"\n";
+			msg += "# instruction: " + "(" + inst.iIndex() + ") " + inst +"\n";
 			msg += "# targetMethod: addJavascriptInterface\n";
 			msg += "# object paramter: " + obj + "\n";
 			msg += "\tlocal creation? no\n";

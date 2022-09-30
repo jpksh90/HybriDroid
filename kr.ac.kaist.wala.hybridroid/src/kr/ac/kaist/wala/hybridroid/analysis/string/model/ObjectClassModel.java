@@ -46,7 +46,7 @@ public class ObjectClassModel extends AbstractClassModel{
 				SSAInvokeInstruction invokeInst) {
 			Set<IBox> boxSet = new HashSet<IBox>();
 			int objVar = invokeInst.getUse(0);
-			IBox objBox = new VarBox(caller, invokeInst.iindex, objVar);
+			IBox objBox = new VarBox(caller, invokeInst.iIndex(), objVar);
 			if(graph.addEdge(new ToStringOpNode(), def, objBox)){
 					boxSet.add(objBox);
 			}

@@ -339,7 +339,7 @@ public class FieldDefAnalysis {
 						if(!defIndexes.containsKey(field))
 							defIndexes.put(field, new HashSet<Integer>());
 						
-						defIndexes.get(field).add(putInst.iindex);
+						defIndexes.get(field).add(putInst.iIndex());
 						
 						Set<Integer> defSet = defIndexes.get(field);
 						int[] defs = new int[defSet.size()];
@@ -378,7 +378,7 @@ public class FieldDefAnalysis {
 						if(!defIndexes.containsKey(field))
 							defIndexes.put(field, new HashSet<Integer>());
 						
-						defIndexes.get(field).add(invokeInst.iindex);
+						defIndexes.get(field).add(invokeInst.iIndex());
 						
 						Set<Integer> defSet = defIndexes.get(field);
 						int[] defs = new int[defSet.size()];

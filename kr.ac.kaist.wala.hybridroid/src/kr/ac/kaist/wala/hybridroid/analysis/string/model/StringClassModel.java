@@ -84,7 +84,7 @@ public class StringClassModel extends AbstractClassModel{
 				SSAInvokeInstruction invokeInst) {
 			Set<IBox> boxSet = new HashSet<IBox>();
 			int useVar = invokeInst.getUse(0);
-			IBox use = new VarBox(caller, invokeInst.iindex, useVar);
+			IBox use = new VarBox(caller, invokeInst.iIndex(), useVar);
 			if(graph.addEdge(new AssignOpNode(), def, use))
 					boxSet.add(use);
 			return boxSet;
@@ -108,9 +108,9 @@ public class StringClassModel extends AbstractClassModel{
 			int toBeSubstedVar = invokeInst.getUse(1);
 			int toSubstVar = invokeInst.getUse(2);
 			
-			IBox strBox = new VarBox(caller, invokeInst.iindex, strVar);
-			IBox toBeSubstedBox = new VarBox(caller, invokeInst.iindex, toBeSubstedVar);
-			IBox toSubstBox = new VarBox(caller, invokeInst.iindex, toSubstVar);
+			IBox strBox = new VarBox(caller, invokeInst.iIndex(), strVar);
+			IBox toBeSubstedBox = new VarBox(caller, invokeInst.iIndex(), toBeSubstedVar);
+			IBox toSubstBox = new VarBox(caller, invokeInst.iIndex(), toSubstVar);
 			
 			if(graph.addEdge(new ReplaceOpNode(), def, strBox, toBeSubstedBox, toSubstBox)){
 				boxSet.add(strBox);
@@ -195,9 +195,9 @@ public class StringClassModel extends AbstractClassModel{
 			int beginVar = invokeInst.getUse(1);
 			int endVar = invokeInst.getUse(2);
 			
-			IBox strBox = new VarBox(caller, invokeInst.iindex, strVar);
-			IBox beginBox = new VarBox(caller, invokeInst.iindex, beginVar);
-			IBox endBox = new VarBox(caller, invokeInst.iindex, endVar);
+			IBox strBox = new VarBox(caller, invokeInst.iIndex(), strVar);
+			IBox beginBox = new VarBox(caller, invokeInst.iIndex(), beginVar);
+			IBox endBox = new VarBox(caller, invokeInst.iIndex(), endVar);
 			
 			if(graph.addEdge(new SubstringOpNode(), def, strBox, beginBox, endBox)){
 				boxSet.add(strBox);
@@ -223,8 +223,8 @@ public class StringClassModel extends AbstractClassModel{
 			int strVar = invokeInst.getUse(0);
 			int beginVar = invokeInst.getUse(1);
 
-			IBox strBox = new VarBox(caller, invokeInst.iindex, strVar);
-			IBox beginBox = new VarBox(caller, invokeInst.iindex, beginVar);
+			IBox strBox = new VarBox(caller, invokeInst.iIndex(), strVar);
+			IBox beginBox = new VarBox(caller, invokeInst.iIndex(), beginVar);
 
 			if (graph.addEdge(new SubstringOpNode(), def, strBox, beginBox)) {
 				boxSet.add(strBox);
@@ -248,7 +248,7 @@ public class StringClassModel extends AbstractClassModel{
 				SSAInvokeInstruction invokeInst) {
 			Set<IBox> boxSet = new HashSet<IBox>();
 			int strVar = invokeInst.getUse(0);
-			IBox strBox = new VarBox(caller, invokeInst.iindex, strVar);
+			IBox strBox = new VarBox(caller, invokeInst.iIndex(), strVar);
 			if(graph.addEdge(new LengthOpNode(), def, strBox)){
 				boxSet.add(strBox);
 			}
@@ -273,9 +273,9 @@ public class StringClassModel extends AbstractClassModel{
 			int charVar = invokeInst.getUse(1);
 			int fromVar = invokeInst.getUse(2);
 			
-			IBox strBox = new VarBox(caller, invokeInst.iindex, strVar);
-			IBox charBox = new VarBox(caller, invokeInst.iindex, charVar);
-			IBox fromBox = new VarBox(caller, invokeInst.iindex, fromVar);
+			IBox strBox = new VarBox(caller, invokeInst.iIndex(), strVar);
+			IBox charBox = new VarBox(caller, invokeInst.iIndex(), charVar);
+			IBox fromBox = new VarBox(caller, invokeInst.iIndex(), fromVar);
 			if(graph.addEdge(new IndexOfOpNode(), def, strBox, charBox, fromBox)){
 				boxSet.add(strBox);
 				boxSet.add(charBox);
@@ -298,7 +298,7 @@ public class StringClassModel extends AbstractClassModel{
 		public Set<IBox> draw(ConstraintGraph graph, IBox def, CGNode caller, SSAInvokeInstruction invokeInst) {
 			Set<IBox> boxSet = new HashSet<IBox>();
 			int strVar = invokeInst.getUse(0);
-			IBox strBox = new VarBox(caller, invokeInst.iindex, strVar);
+			IBox strBox = new VarBox(caller, invokeInst.iIndex(), strVar);
 
 			if (graph.addEdge(new ToStringOpNode(), def, strBox)) {
 				boxSet.add(strBox);

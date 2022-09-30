@@ -46,7 +46,7 @@ public class UriClassModel  extends AbstractClassModel{
 			// TODO Auto-generated method stub
 			Set<IBox> boxSet = new HashSet<IBox>();
 			int uriVar = invokeInst.getUse(0);
-			IBox uriBox = new VarBox(caller, invokeInst.iindex, uriVar);
+			IBox uriBox = new VarBox(caller, invokeInst.iIndex(), uriVar);
 			if(graph.addEdge(new ToStringOpNode(), def, uriBox)){
 					boxSet.add(uriBox);
 			}
