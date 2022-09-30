@@ -1,13 +1,13 @@
 /*******************************************************************************
-* Copyright (c) 2016 IBM Corporation and KAIST.
-* All rights reserved. This program and the accompanying materials
-* are made available under the terms of the Eclipse Public License v1.0
-* which accompanies this distribution, and is available at
-* http://www.eclipse.org/legal/epl-v10.html
-*
-* Contributors:
-* KAIST - initial API and implementation
-*******************************************************************************/
+ * Copyright (c) 2016 IBM Corporation and KAIST.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * KAIST - initial API and implementation
+ *******************************************************************************/
 package kr.ac.kaist.wala.hybridroid.callgraph;
 
 import com.ibm.wala.cast.js.types.JavaScriptTypes;
@@ -21,36 +21,33 @@ import com.ibm.wala.util.intset.IntSet;
 
 public class HybridContextSelector implements ContextSelector {
 
-	private ContextSelector delegateForJava;
-	private ContextSelector delegateForJS;
-	
-	public HybridContextSelector(ContextSelector delegateForJava, ContextSelector delegateForJS){
-		this.delegateForJava = delegateForJava;
-		this.delegateForJS = delegateForJS;
-	}
-	
-	@Override
-	public Context getCalleeTarget(CGNode caller, CallSiteReference site, IMethod callee,
-			InstanceKey[] actualParameters) {
-		// TODO Auto-generated method stub
-		if(isJavaMethod(caller.getMethod()))
-			return delegateForJava.getCalleeTarget(caller, site, callee, actualParameters);
-		else
-			return delegateForJS.getCalleeTarget(caller, site, callee, actualParameters);
-	}
+  private ContextSelector delegateForJava;
+  private ContextSelector delegateForJS;
 
-	@Override
-	public IntSet getRelevantParameters(CGNode caller, CallSiteReference site) {
-		// TODO Auto-generated method stub
-		if(isJavaMethod(caller.getMethod()))
-			return delegateForJava.getRelevantParameters(caller, site);
-		else
-			return delegateForJS.getRelevantParameters(caller, site);
-	}
+  public HybridContextSelector(ContextSelector delegateForJava, ContextSelector delegateForJS) {
+    this.delegateForJava = delegateForJava;
+    this.delegateForJS = delegateForJS;
+  }
 
-	private boolean isJavaMethod(IMethod m){
-		if(m.getDeclaringClass().getClassLoader().equals(JavaScriptTypes.jsLoader))
-			return false;
-		return true;
-	}
+  @Override
+  public Context getCalleeTarget(
+      CGNode caller, CallSiteReference site, IMethod callee, InstanceKey[] actualParameters) {
+    // TODO Auto-generated method stub
+    if (isJavaMethod(caller.getMethod()))
+      return delegateForJava.getCalleeTarget(caller, site, callee, actualParameters);
+    else return delegateForJS.getCalleeTarget(caller, site, callee, actualParameters);
+  }
+
+  @Override
+  public IntSet getRelevantParameters(CGNode caller, CallSiteReference site) {
+    // TODO Auto-generated method stub
+    if (isJavaMethod(caller.getMethod()))
+      return delegateForJava.getRelevantParameters(caller, site);
+    else return delegateForJS.getRelevantParameters(caller, site);
+  }
+
+  private boolean isJavaMethod(IMethod m) {
+    if (m.getDeclaringClass().getClassLoader().equals(JavaScriptTypes.jsLoader)) return false;
+    return true;
+  }
 }

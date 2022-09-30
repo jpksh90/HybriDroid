@@ -15,24 +15,24 @@ RegExp = primitive("NewRegExp");
 
 undefined = primitive("NewUndefined");
 
-eval = function eval (x) {
-  return primitive("GlobalEval", x); 
+eval = function eval(x) {
+    return primitive("GlobalEval", x);
 };
 
-parseInt = function parseInt (string, radix) { 
-  return primitive("GlobalParseInt", string, radix); 
+parseInt = function parseInt(string, radix) {
+    return primitive("GlobalParseInt", string, radix);
 };
 
-parseFloat = function parseFloat (string) {
-  return primitive("GlobalParseFloat", string);
+parseFloat = function parseFloat(string) {
+    return primitive("GlobalParseFloat", string);
 };
 
-isNaN = function isNaN (number) {
-  return primitive("GlobalIsNaN", number)
+isNaN = function isNaN(number) {
+    return primitive("GlobalIsNaN", number)
 };
 
-isFinite = function isFinite (number) {
-  return primitive("GlobalIsFinite", number);
+isFinite = function isFinite(number) {
+    return primitive("GlobalIsFinite", number);
 };
 
 decodeURI = primitive("GlobalDecodeURI");
@@ -47,34 +47,36 @@ encodeURIComponent = primitive("GlobalEncodeURIComponent");
 /************************************************************************/
 /* Object properties, see spec 15.2					*/
 /************************************************************************/
-    
+
 Object.prototype = {
 
-  prototype: null,
+    prototype: null,
 
-  constructor: Object,
+    constructor: Object,
 
-  toString: function toString() {
-    return primitive("ObjectToString", this);
-  },
+    toString: function toString() {
+        return primitive("ObjectToString", this);
+    },
 
-  toLocaleString: function toLocaleString() {
-    return primitive("ObjectToLocaleString", this);
-  },
+    toLocaleString: function toLocaleString() {
+        return primitive("ObjectToLocaleString", this);
+    },
 
-  valueOf: function valueOf() { return this },
+    valueOf: function valueOf() {
+        return this
+    },
 
-  hasOwnProperty: function hasOwnProperty (V) {
-    return primitive("ObjectHasOwnProperty", this, V);
-  },
+    hasOwnProperty: function hasOwnProperty(V) {
+        return primitive("ObjectHasOwnProperty", this, V);
+    },
 
-  isPrototypeOf: function isPrototypeOf (V) {
-    return primitive("ObjectIsPrototypeOf", this, V);
-  },
+    isPrototypeOf: function isPrototypeOf(V) {
+        return primitive("ObjectIsPrototypeOf", this, V);
+    },
 
-  propertyIsEnumerable: function propertyIsEnumerable (V) {
-    return primitive("ObjectPropertyIsEnumerable", this, V);
-  }
+    propertyIsEnumerable: function propertyIsEnumerable(V) {
+        return primitive("ObjectPropertyIsEnumerable", this, V);
+    }
 };
 
 
@@ -84,19 +86,19 @@ Object.prototype = {
 
 Function.prototype = {
 
-  constructor: Function,
+    constructor: Function,
 
-  toString: function functionToString() {
-    return primitive("FunctionToString", this);
-  },
+    toString: function functionToString() {
+        return primitive("FunctionToString", this);
+    },
 
-  apply: function functionApply (thisArg, argArray) {
-    return primitive("FunctionApply", this, thisArg, argArray);
-  },
+    apply: function functionApply(thisArg, argArray) {
+        return primitive("FunctionApply", this, thisArg, argArray);
+    },
 
-  call: function functionCall (thisArg) {
-    arguments.shift();
-    return primitive("FunctionApply", this, thisArg, arguments);
-  }
+    call: function functionCall(thisArg) {
+        arguments.shift();
+        return primitive("FunctionApply", this, thisArg, arguments);
+    }
 };
 

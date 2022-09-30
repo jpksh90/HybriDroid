@@ -19,12 +19,12 @@ import com.ibm.wala.classLoader.JarFileModule;
 import com.ibm.wala.classLoader.Language;
 import com.ibm.wala.classLoader.SourceModule;
 import com.ibm.wala.classLoader.SourceURLModule;
+import com.ibm.wala.core.util.strings.Atom;
 import com.ibm.wala.dalvik.classLoader.DexFileModule;
 import com.ibm.wala.ipa.callgraph.AnalysisScope;
 import com.ibm.wala.types.ClassLoaderReference;
 import com.ibm.wala.util.collections.HashSetFactory;
 import com.ibm.wala.util.config.FileOfClasses;
-import com.ibm.wala.util.strings.Atom;
 import kr.ac.kaist.wala.hybridroid.models.AndroidHybridAppModel;
 import kr.ac.kaist.wala.hybridroid.util.file.FileWriter;
 import org.apache.commons.lang3.SystemUtils;
@@ -49,9 +49,9 @@ import java.util.jar.JarFile;
  */
 public class AndroidHybridAnalysisScope extends AnalysisScope {
 
-  public static boolean DEBUG = false;
-
   private static final Set<Language> languages;
+  public static boolean DEBUG = false;
+  private static Map<Atom, Atom> nameConvertMap = new HashMap<Atom, Atom>();
 
   static {
     languages = HashSetFactory.make();
@@ -59,6 +59,8 @@ public class AndroidHybridAnalysisScope extends AnalysisScope {
     languages.add(Language.JAVA);
     languages.add(JavaScriptLoader.JS);
   }
+
+  private Map<Atom, ClassLoaderReference> jsLoaderMap;
 
   public AndroidHybridAnalysisScope() {
     super(languages);
@@ -93,9 +95,8 @@ public class AndroidHybridAnalysisScope extends AnalysisScope {
               ? new FileInputStream(exclusionsFile)
               : AndroidHybridAppModel.class.getResourceAsStream(exclusions);
       scope.setExclusions(new FileOfClasses(fs));
-		fs.close();
-
-	}
+      fs.close();
+    }
 
     scope.setLoaderImpl(
         ClassLoaderReference.Primordial, "com.ibm.wala.dalvik.classLoader.WDexClassLoaderImpl");
@@ -119,8 +120,6 @@ public class AndroidHybridAnalysisScope extends AnalysisScope {
 
     return scope;
   }
-
-  private static Map<Atom, Atom> nameConvertMap = new HashMap<Atom, Atom>();
 
   private static AndroidHybridAnalysisScope setUpJsAnalysisScope(
       String dir, AndroidHybridAnalysisScope scope, Set<URL> htmls)
@@ -204,8 +203,6 @@ public class AndroidHybridAnalysisScope extends AnalysisScope {
 
     return scope;
   }
-
-  private Map<Atom, ClassLoaderReference> jsLoaderMap;
 
   private static void addScopeMap(Atom f, Atom s) {
     nameConvertMap.put(f, s);
