@@ -32,7 +32,7 @@ import com.ibm.wala.cast.js.types.JavaScriptTypes;
 import com.ibm.wala.classLoader.IField;
 import com.ibm.wala.classLoader.IMethod;
 import com.ibm.wala.classLoader.Language;
-import com.ibm.wala.core.tests.callGraph.CallGraphTestUtil;
+//import com.ibm.wala.core.tests.callGraph.CallGraphTestUtil;
 import com.ibm.wala.ipa.callgraph.AnalysisCache;
 import com.ibm.wala.ipa.callgraph.AnalysisCacheImpl;
 import com.ibm.wala.ipa.callgraph.AnalysisOptions;
@@ -130,7 +130,8 @@ public class HybridCFGAnalysis {
 	private AndroidStringAnalysis analyzeString(String libPath, String targetPath, AndroidResourceAnalysis ara) throws ClassHierarchyException, IllegalArgumentException, CallGraphBuilderCancelException{
 		AndroidStringAnalysis asa = new AndroidStringAnalysis(ara);
 		asa.setupAndroidLibs(libPath);
-		asa.setExclusion(CallGraphTestUtil.REGRESSION_EXCLUSIONS);
+//		asa.setExclusion(null);
+//		asa.setExclusion(CallGraphTestUtil.REGRESSION_EXCLUSIONS);
 		asa.addAnalysisScope(targetPath);
 		List<Hotspot> hotspots = new ArrayList<Hotspot>();
 		hotspots.add(new ArgumentHotspot(ClassLoaderReference.Application, "android/webkit/WebView", "loadUrl(Ljava/lang/String;)V", 0));

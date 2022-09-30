@@ -31,7 +31,8 @@ $(HYBRIDROID): $(WALA_TARGETS)
 	$(BASH) $(GRDW) build -x test
 
 $(WALA_TARGETS): $(WALA_DIR)
-	$(MVN) clean install -DskipTests -B -q -f $(WALA_DIR)/pom.xml
+		cd $(WALA_DIR) && ./gradlew assemble && cd ..
+#	$(MVN) clean install -DskipTests -B -q -f $(WALA_DIR)/pom.xml
 
 $(WALA_DIR):
 	$(GIT) clone --depth=50 https://github.com/wala/WALA $(WALA_DIR)

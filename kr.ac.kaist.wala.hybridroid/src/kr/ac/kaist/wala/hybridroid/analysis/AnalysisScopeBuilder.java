@@ -10,7 +10,7 @@
 *******************************************************************************/
 package kr.ac.kaist.wala.hybridroid.analysis;
 
-import com.ibm.wala.core.tests.callGraph.CallGraphTestUtil;
+//import com.ibm.wala.core.tests.callGraph.CallGraphTestUtil;
 import com.ibm.wala.properties.WalaProperties;
 import kr.ac.kaist.wala.hybridroid.callgraph.AndroidHybridAnalysisScope;
 import kr.ac.kaist.wala.hybridroid.shell.Shell;
@@ -110,7 +110,9 @@ public class AnalysisScopeBuilder {
 	}
 		
 	public AndroidHybridAnalysisScope makeScope(String libPath) throws IOException{
-			return AndroidHybridAnalysisScope.setUpAndroidHybridAnalysisScope(dir, target.toURI(), htmls, 
-					CallGraphTestUtil.REGRESSION_EXCLUSIONS, (new File(libPath)).toURI());
+					return AndroidHybridAnalysisScope.setUpAndroidHybridAnalysisScope(dir, target.toURI(), htmls,
+					null, (new File(libPath)).toURI());
+//			return AndroidHybridAnalysisScope.setUpAndroidHybridAnalysisScope(dir, target.toURI(), htmls,
+//					CallGraphTestUtil.REGRESSION_EXCLUSIONS, (new File(libPath)).toURI());
 	}
 }
