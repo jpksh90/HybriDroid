@@ -2,12 +2,12 @@ def wala = file("WALA")
 
 def apkfile = file("./kr.ac.kaist.wala.hybridroid/libs/apktool_2.3.0.jar").getAbsolutePath()
 
-subprojects{
-    ext {
-        wala_path = wala.getAbsolutePath()
-        wala_version = "1.5.3"
-    }
-}
+//subprojects{
+//    ext {
+//        wala_path = wala.getAbsolutePath()
+//        wala_version = "1.5.3"
+//    }
+//}
 
 wrapper{
   gradleVersion = "5.2.1"

@@ -18,10 +18,10 @@ sourceSets {
 }
 
 dependencies {
-	implementation("com.ibm.wala:com.ibm.wala.dalvik:1.5.3")
+	implementation("com.ibm.wala:com.ibm.wala.dalvik:1.5.8")
 	// https://mvnrepository.com/artifact/com.ibm.wala/com.ibm.wala.util
-	implementation("com.ibm.wala:com.ibm.wala.util:1.5.3")
-	implementation("com.ibm.wala:com.ibm.wala.core:1.5.3")
+	implementation("com.ibm.wala:com.ibm.wala.util:1.5.8")
+	implementation("com.ibm.wala:com.ibm.wala.core:1.5.8")
 //	implementation files(wala_path + '/com.ibm.wala.util/target/com.ibm.wala.util-' + wala_version + '-SNAPSHOT.jar',
 //		      wala_path + '/com.ibm.wala.dalvik/target/com.ibm.wala.dalvik-' + wala_version + '-SNAPSHOT.jar',
 //		      wala_path + '/com.ibm.wala.core/target/com.ibm.wala.core-' + wala_version + '-SNAPSHOT.jar')

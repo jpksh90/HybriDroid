@@ -54,10 +54,11 @@ dependencies {
     implementation('com.ibm.wala:com.ibm.wala.shrike:1.5.8')
     implementation('com.ibm.wala:com.ibm.wala.cast.java:1.5.8')
     implementation group: 'com.ibm.wala', name: 'com.ibm.wala.util', version: '1.5.8'
-    implementation group: 'com.ibm.wala', name: 'com.ibm.wala.core', version: '1.5.6'
+    implementation group: 'com.ibm.wala', name: 'com.ibm.wala.core', version: '1.5.8'
+//    implementation group: 'io.github.ibotpeaches', name: 'Apktool', version: '2.0.2'
 
 
-    implementation(files('/Users/jyotiprakash/Research/HybriDroid/kr.ac.kaist.wala.hybridroid/libs/apktool_2.3.0.jar'))
+//    implementation(files('/Users/jyotiprakash/Research/HybriDroid/kr.ac.kaist.wala.hybridroid/libs/apktool_2.3.0.jar'))
 
 //	implementation files(wala_path + '/com.ibm.wala.cast.js.rhino/target/com.ibm.wala.cast.js.rhino-' + wala_version + '-SNAPSHOT.jar',
 //		wala_path + '/com.ibm.wala.util/target/com.ibm.wala.util-' + wala_version + '-SNAPSHOT.jar',
@@ -81,4 +82,6 @@ dependencies {
     implementation group: 'net.htmlparser.jericho', name: 'jericho-html', version: '3.2'
     implementation group: 'commons-io', name: 'commons-io', version: '2.4'
     implementation group: 'org.mozilla', name: 'rhino', version: '1.7.10'
+    implementation group: 'com.google.guava', name: 'guava', version: '31.1-jre'
+
 }
