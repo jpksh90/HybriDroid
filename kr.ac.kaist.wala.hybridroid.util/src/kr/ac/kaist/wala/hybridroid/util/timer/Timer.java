@@ -11,18 +11,19 @@
 package kr.ac.kaist.wala.hybridroid.util.timer;
 
 public class Timer {
-	private long start;
-	private long end;
-	static public Timer start(){
-		return new Timer(System.currentTimeMillis());
-	}
+  private long start;
+  private long end;
 
-	private Timer(long start){
-		this.start = start;
-	}
-	
-	public long end(){
-		this.end = System.currentTimeMillis();
-		return end - start;
-	}
+  private Timer(long start) {
+    this.start = start;
+  }
+
+  public static Timer start() {
+    return new Timer(System.currentTimeMillis());
+  }
+
+  public long end() {
+    this.end = System.currentTimeMillis();
+    return end - start;
+  }
 }

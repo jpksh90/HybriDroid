@@ -24,9 +24,9 @@ import org.apache.commons.cli.ParseException;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -156,15 +156,13 @@ public class Shell {
     if (targetFile.isDirectory()) {
       File[] tmpList =
           targetFile.listFiles(
-              new FilenameFilter() {
-                @Override
-                public boolean accept(File dir, String name) {
-                  // TODO Auto-generated method stub
-                  if (name.endsWith(".apk")) return true;
-                  else return false;
-                }
+              (dir, name) -> {
+                // TODO Auto-generated method stub
+                return name.endsWith(".apk");
               });
-      for (File f : tmpList) fileList.add(f);
+      if (tmpList != null) {
+        fileList.addAll(Arrays.asList(tmpList));
+      }
     } else {
       fileList.add(targetFile);
     }

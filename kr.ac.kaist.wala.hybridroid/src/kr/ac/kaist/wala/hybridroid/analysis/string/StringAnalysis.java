@@ -14,7 +14,7 @@ import java.util.List;
 
 public interface StringAnalysis {
 
-  public void addAnalysisScope(String path);
+  void addAnalysisScope(String path);
 
-  public void analyze(List<Hotspot> hotspots) throws Exception;
+  void analyze(List<Hotspot> hotspots) throws Exception;
 }

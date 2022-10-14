@@ -15,14 +15,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class DummyFileManager {
-	private static Set<File> dummies = new HashSet<File>();
-	
-	public static void addDummyFile(File f){
-		dummies.add(f);
-	}
+  private static Set<File> dummies = new HashSet<File>();
 
-//	public static void removeAllDummies(){
-//		for(dummies.)
-//		
-//	}
+  public static void addDummyFile(File f) {
+    dummies.add(f);
+  }
+
+  //	public static void removeAllDummies(){
+  //		for(dummies.)
+  //
+  //	}
 }

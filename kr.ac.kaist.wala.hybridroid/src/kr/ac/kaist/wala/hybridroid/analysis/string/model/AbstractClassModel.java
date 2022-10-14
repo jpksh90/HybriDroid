@@ -19,7 +19,7 @@ public abstract class AbstractClassModel implements IClassModel {
   protected Map<Selector, IMethodModel> methodMap;
 
   protected AbstractClassModel() {
-    methodMap = new HashMap<Selector, IMethodModel>();
+    methodMap = new HashMap<>();
     init();
   }
 

@@ -9,7 +9,7 @@ def apkfile = file("./kr.ac.kaist.wala.hybridroid/libs/apktool_2.3.0.jar").getAb
 //    }
 //}
 
-wrapper{
-  gradleVersion = "5.2.1"
+wrapper {
+    gradleVersion = "5.2.1"
 }
 

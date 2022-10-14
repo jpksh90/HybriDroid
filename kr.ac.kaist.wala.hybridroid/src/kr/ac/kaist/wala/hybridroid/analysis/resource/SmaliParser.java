@@ -74,10 +74,7 @@ public class SmaliParser {
         else if (line.startsWith(SUPER_TYPE)) continue;
         else if (line.startsWith(SOURCE_TYPE)) continue;
         else if (line.startsWith(COMMENT_TYPE)) continue;
-        else if (!line.startsWith(RES_TYPE)
-            || !line.contains(" = ")
-            || !line.contains(":I")
-            || !line.equals("")) {
+        else {
           return false;
         }
       }

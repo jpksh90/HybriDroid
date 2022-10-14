@@ -47,10 +47,6 @@ public class StringModel {
     }
   }
 
-  public static Set<String> getWarnings() {
-    return warnings;
-  }
-
   public static void init(IClassHierarchy cha) {
     classMap.put(
         cha.lookupClass(TypeReference.find(ClassLoaderReference.Primordial, "Ljava/lang/String")),

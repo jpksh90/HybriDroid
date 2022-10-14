@@ -108,10 +108,7 @@ public class AnalysisScopeBuilder {
 
       inputPrinter.interrupt();
       errorPrinter.interrupt();
-    } catch (InterruptedException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (IOException e) {
+    } catch (InterruptedException | IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }

@@ -26,7 +26,7 @@ public class CommandArguments {
   public static final String PRE_STRING_ARG = "prestr";
   public static final String ONLY_JS_ARG = "j";
   public static final String ONLY_JS_LONG_ARG = "jsonly";
-  private static Options options;
+  private static final Options options;
 
   static {
     options = new Options();

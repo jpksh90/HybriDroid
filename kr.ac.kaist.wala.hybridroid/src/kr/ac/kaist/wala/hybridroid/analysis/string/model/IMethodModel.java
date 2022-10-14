@@ -16,5 +16,5 @@ import kr.ac.kaist.wala.hybridroid.analysis.string.constraint.ConstraintGraph;
 import kr.ac.kaist.wala.hybridroid.analysis.string.constraint.IBox;
 
 public interface IMethodModel<T> {
-  public T draw(ConstraintGraph graph, IBox def, CGNode caller, SSAInvokeInstruction invokeInst);
+   T draw(ConstraintGraph graph, IBox def, CGNode caller, SSAInvokeInstruction invokeInst);
 }

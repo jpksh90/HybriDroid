@@ -29,13 +29,12 @@ public class XMLStringResourceReader {
   public static final String STRING_TAG = "string";
   public static final String RESOURCE_TAG = "resources";
   public static final String NAME_PROP = "name";
-  private String fileName;
 
   public XMLStringResourceReader() {}
 
   public Map<String, String> parseResource(File xml) {
     try {
-      this.fileName = xml.getCanonicalPath();
+      String fileName = xml.getCanonicalPath();
       return readXML(new FileInputStream(xml));
     } catch (SAXException | IOException | ParserConfigurationException e) {
       // TODO Auto-generated catch block

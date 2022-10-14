@@ -1,8 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = 'kr/ac/kaist/wala/hybridroid/shell/Shell'
-
 repositories {
     mavenLocal()
     mavenCentral()
@@ -12,11 +10,11 @@ repositories {
 }
 
 sourceSets {
-    main {
+    main(({
         java {
             srcDir 'src'
         }
-    }
+    } as String))
     test {
         java {
             srcDir 'test'
@@ -55,24 +53,6 @@ dependencies {
     implementation('com.ibm.wala:com.ibm.wala.cast.java:1.5.8')
     implementation group: 'com.ibm.wala', name: 'com.ibm.wala.util', version: '1.5.8'
     implementation group: 'com.ibm.wala', name: 'com.ibm.wala.core', version: '1.5.8'
-//    implementation group: 'io.github.ibotpeaches', name: 'Apktool', version: '2.0.2'
-
-
-//    implementation(files('/Users/jyotiprakash/Research/HybriDroid/kr.ac.kaist.wala.hybridroid/libs/apktool_2.3.0.jar'))
-
-//	implementation files(wala_path + '/com.ibm.wala.cast.js.rhino/target/com.ibm.wala.cast.js.rhino-' + wala_version + '-SNAPSHOT.jar',
-//		wala_path + '/com.ibm.wala.util/target/com.ibm.wala.util-' + wala_version + '-SNAPSHOT.jar',
-//		wala_path + '/com.ibm.wala.cast.js.html.nu_validator/target/com.ibm.wala.cast.js.html.nu_validator-' + wala_version + '-SNAPSHOT.jar',
-//		wala_path + '/com.ibm.wala.cast/target/com.ibm.wala.cast-' + wala_version + '-SNAPSHOT.jar',
-//		wala_path + '/com.ibm.wala.dalvik/target/com.ibm.wala.dalvik-' + wala_version + '-SNAPSHOT.jar',
-//		wala_path + '/com.ibm.wala.cast.js.rhino.test/target/com.ibm.wala.cast.js.rhino.test-' + wala_version + '-SNAPSHOT.jar',
-//		wala_path + '/com.ibm.wala.shrike/target/com.ibm.wala.shrike-' + wala_version + '-SNAPSHOT.jar',
-//		wala_path + '/com.ibm.wala.cast.js/target/com.ibm.wala.cast.js-' + wala_version + '-SNAPSHOT.jar',
-//		wala_path + '/com.ibm.wala.cast.js.test/target/com.ibm.wala.cast.js.test-' + wala_version + '-SNAPSHOT.jar',
-//		wala_path + '/com.ibm.wala.cast.java/target/com.ibm.wala.cast.java-' + wala_version + '-SNAPSHOT.jar',
-//		wala_path + '/com.ibm.wala.core/target/com.ibm.wala.core-' + wala_version + '-SNAPSHOT.jar',
-//		wala_path + '/com.ibm.wala.core.tests/target/com.ibm.wala.core.tests-' + wala_version + '-SNAPSHOT.jar',
-//		'libs/apktool_2.3.0.jar')
     // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
     // https://mvnrepository.com/artifact/commons-cli/commons-cli

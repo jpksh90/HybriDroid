@@ -530,7 +530,7 @@ public class ResourceCallGraphBuilder extends ZeroXCFABuilder {
 
       ResourceInfo info = ara.getInfo(classpath);
 
-      if (info == null || !info.isDeclaredResorce(fieldName)) return -1;
+      if (info == null || !info.isDeclaredResource(fieldName)) return -1;
 
       int v = info.getResourceValue(fieldName);
 

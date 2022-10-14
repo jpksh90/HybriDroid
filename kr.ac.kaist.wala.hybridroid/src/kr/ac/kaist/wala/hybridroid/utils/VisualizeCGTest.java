@@ -47,14 +47,12 @@ public class VisualizeCGTest {
       //				return true;
       if (fromLoader(_node.getMethod().getDeclaringClass(), JavaScriptTypes.jsLoader)) return true;
       else if (fromLoader(_node.getMethod().getDeclaringClass(), ClassLoaderReference.Primordial)) {
-        if (_node.toString().contains("setWebView")
-            || _node.toString().contains("addJavascriptInterface")) return true;
-        return false;
+        return _node.toString().contains("setWebView")
+            || _node.toString().contains("addJavascriptInterface");
       } else if (fromLoader(_node.getMethod().getDeclaringClass(), ClassLoaderReference.Extension))
         return false;
-      else if (fromLoader(_node.getMethod().getDeclaringClass(), ClassLoaderReference.Application))
-        return true;
-      else return false;
+      else
+        return fromLoader(_node.getMethod().getDeclaringClass(), ClassLoaderReference.Application);
     }
     return false;
     // return true;
@@ -64,17 +62,15 @@ public class VisualizeCGTest {
     if (!_node.toString().contains("preamble.js") && !_node.toString().contains("prologue.js")) {
       if (fromLoader(_node.getMethod().getDeclaringClass(), JavaScriptTypes.jsLoader)) return true;
       else if (fromLoader(_node.getMethod().getDeclaringClass(), ClassLoaderReference.Primordial)) {
-        if (_node.toString().contains("setWebView")
-            || _node.toString().contains("addJavascriptInterface")) return true;
-        return false;
+        return _node.toString().contains("setWebView")
+            || _node.toString().contains("addJavascriptInterface");
       }
       //			if(fromLoader(_node.getMethod().getDeclaringClass(), ClassLoaderReference.Primordial))
       //				return false;
       //			if(fromLoader(_node.getMethod().getDeclaringClass(), ClassLoaderReference.Extension))
       //				return false;
-      else if (fromLoader(_node.getMethod().getDeclaringClass(), ClassLoaderReference.Application))
-        return true;
-      else return false;
+      else
+        return fromLoader(_node.getMethod().getDeclaringClass(), ClassLoaderReference.Application);
     }
     return false;
   }

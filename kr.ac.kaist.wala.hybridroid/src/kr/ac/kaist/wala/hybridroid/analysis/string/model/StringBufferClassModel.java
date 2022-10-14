@@ -50,7 +50,7 @@ public class StringBufferClassModel extends AbstractClassModel {
     }
   }
 
-  class Append implements IMethodModel<Set<IBox>> {
+  static class Append implements IMethodModel<Set<IBox>> {
     @Override
     public Set<IBox> draw(
         ConstraintGraph graph, IBox def, CGNode caller, SSAInvokeInstruction invokeInst) {

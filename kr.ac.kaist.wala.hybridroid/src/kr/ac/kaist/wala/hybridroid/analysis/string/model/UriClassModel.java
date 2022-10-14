@@ -37,13 +37,13 @@ public class UriClassModel extends AbstractClassModel {
   }
 
   // toString()Ljava/lang/String;
-  class ToString implements IMethodModel<Set<IBox>> {
+  static class ToString implements IMethodModel<Set<IBox>> {
 
     @Override
     public Set<IBox> draw(
         ConstraintGraph graph, IBox def, CGNode caller, SSAInvokeInstruction invokeInst) {
       // TODO Auto-generated method stub
-      Set<IBox> boxSet = new HashSet<IBox>();
+      Set<IBox> boxSet = new HashSet<>();
       int uriVar = invokeInst.getUse(0);
       IBox uriBox = new VarBox(caller, invokeInst.iIndex(), uriVar);
       if (graph.addEdge(new ToStringOpNode(), def, uriBox)) {

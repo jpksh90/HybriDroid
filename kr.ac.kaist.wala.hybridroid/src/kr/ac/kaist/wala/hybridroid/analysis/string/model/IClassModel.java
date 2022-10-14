@@ -13,5 +13,5 @@ package kr.ac.kaist.wala.hybridroid.analysis.string.model;
 import com.ibm.wala.types.Selector;
 
 public interface IClassModel {
-  public IMethodModel getMethod(Selector mSelector);
+  IMethodModel getMethod(Selector mSelector);
 }

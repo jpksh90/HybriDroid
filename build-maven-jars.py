@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
+import os
+import subprocess
 # script to build jars for maven central
 import sys
-import subprocess
-import os
 
 # action should be either 'install' (for local test)
 # or 'deploy' (for deployment to maven central).
@@ -23,18 +23,20 @@ projects = [
     "cast.java.ecj",
     "cast.js",
     "cast.js.rhino"
-    ]
+]
 
 for proj in projects:
     full_proj = "com.ibm.wala." + proj
-    print full_proj
+    print
+    full_proj
     os.chdir(full_proj)
     mvnCmd = "mvn -f mvncentral.xml clean " + action
     try:
         subprocess.check_output(mvnCmd, shell=True)
     except subprocess.CalledProcessError as e:
-        print "OUTPUT"
-        print e.output
+        print
+        "OUTPUT"
+        print
+        e.output
         raise
-    os.chdir("..")    
-
+    os.chdir("..")

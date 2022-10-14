@@ -13,7 +13,8 @@ package kr.ac.kaist.wala.hybridroid.analysis.string.constraint;
 import kr.ac.kaist.wala.hybridroid.analysis.string.constraint.solver.domain.value.IValue;
 
 public class UnaryOpNode implements IOperatorNode {
-    private UnaryOperator o;;
+  private UnaryOperator o;
+  ;
 
   public UnaryOpNode(UnaryOperator o) {
     this.o = o;
@@ -30,7 +31,7 @@ public class UnaryOpNode implements IOperatorNode {
     return null;
   }
 
-public static enum UnaryOperator {
+  public static enum UnaryOperator {
     MINUS {
       @Override
       public String toString() {

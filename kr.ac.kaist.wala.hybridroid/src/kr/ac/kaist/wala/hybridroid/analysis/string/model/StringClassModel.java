@@ -174,7 +174,7 @@ public class StringClassModel extends AbstractClassModel {
   }
 
   // substring(II)Ljava/lang/String;
-  class Substring1 implements IMethodModel<Set<IBox>> {
+  static class Substring1 implements IMethodModel<Set<IBox>> {
 
     @Override
     public Set<IBox> draw(
@@ -204,7 +204,7 @@ public class StringClassModel extends AbstractClassModel {
   }
 
   // substring(I)Ljava/lang/String;
-  class Substring2 implements IMethodModel<Set<IBox>> {
+  static class Substring2 implements IMethodModel<Set<IBox>> {
 
     @Override
     public Set<IBox> draw(

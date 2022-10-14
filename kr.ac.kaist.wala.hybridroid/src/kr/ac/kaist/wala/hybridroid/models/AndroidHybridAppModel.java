@@ -27,9 +27,6 @@ import com.ibm.wala.ipa.cha.IClassHierarchy;
 import com.ibm.wala.types.*;
 import com.ibm.wala.util.collections.HashSetFactory;
 import kr.ac.kaist.wala.hybridroid.callgraph.AndroidHybridAnalysisScope;
-import kr.ac.kaist.wala.hybridroid.util.data.None;
-import kr.ac.kaist.wala.hybridroid.util.data.Option;
-import kr.ac.kaist.wala.hybridroid.util.data.Some;
 
 import java.util.*;
 
@@ -45,25 +42,8 @@ public class AndroidHybridAppModel {
     interfMap.put(name, objKey);
   }
 
-  public static Option<InstanceKey> findJSInterface(String name) {
-    Option<InstanceKey> opInstKey =
-        (interfMap.containsKey(name))
-            ? new Some<InstanceKey>(interfMap.get(name))
-            : new None<InstanceKey>();
-    return opInstKey;
-  }
-
-  public static void checkJSInterfaces() {
-    Set<String> sSet = interfMap.keySet();
-    for (String s : sSet) System.out.println("# name: " + s + "\n# obj: " + interfMap.get(s));
-  }
-
   public static Collection<InstanceKey> getJSInterfaces() {
     return interfMap.values();
-  }
-
-  public static int numberOfJSInterface() {
-    return interfMap.size();
   }
 
   public static ComposedEntrypoints getEntrypoints(
@@ -123,7 +103,5 @@ public class AndroidHybridAppModel {
     }
     // is the order of entrypoints important?
     return new ComposedEntrypoints(jsRoots, entrypoints);
-    //		return new ComposedEntrypoints(jsRoots, entrypoints);
-    //		return new ComposedEntrypoints(entrypoints, jsRoots);
   }
 }

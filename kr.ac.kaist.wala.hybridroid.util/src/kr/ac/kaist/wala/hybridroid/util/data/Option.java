@@ -11,8 +11,10 @@
 package kr.ac.kaist.wala.hybridroid.util.data;
 
 public interface Option<T> {
-	
-	public boolean isSome();
-	public boolean isNone();
-	public T get();
+
+  public boolean isSome();
+
+  public boolean isNone();
+
+  public T get();
 }

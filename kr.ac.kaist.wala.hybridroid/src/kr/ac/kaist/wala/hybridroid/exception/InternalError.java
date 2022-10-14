@@ -15,7 +15,7 @@ public class InternalError extends Exception {
   /** */
   private static final long serialVersionUID = 363458200365316710L;
 
-  private String msg;
+  private final String msg;
 
   public InternalError(String msg) {
     this.msg = msg;

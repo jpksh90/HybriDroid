@@ -158,7 +158,7 @@ public final class ConstraintVisitor implements IBoxVisitor<Set<IBox>> {
             }
           }
         } else { // If there is no target method, we use our modeling that is targeted to declaring
-                 // target class and method.
+          // target class and method.
           // If the method is not declared in the class, we find the method in it super class.
           // TODO: Does it make false edge for this invocation?
           Selector tMethodSelector = invokeInst.getDeclaredTarget().getSelector();
@@ -208,7 +208,7 @@ public final class ConstraintVisitor implements IBoxVisitor<Set<IBox>> {
       } else if (defInst instanceof SSAGetInstruction) {
         SSAGetInstruction getInst = (SSAGetInstruction) defInst;
         Set<Pair<CGNode, Set<SSAPutInstruction>>> defSet =
-            fda.getFSFieldDefInstructions(cg, node, getInst);
+            fda.getFSFieldDefInstructions(node, getInst);
         boolean assigned = false;
         for (Pair<CGNode, Set<SSAPutInstruction>> p : defSet) {
           CGNode defNode = p.fst();

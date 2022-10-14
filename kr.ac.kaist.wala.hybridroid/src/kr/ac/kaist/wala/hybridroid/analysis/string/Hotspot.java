@@ -11,7 +11,7 @@
 package kr.ac.kaist.wala.hybridroid.analysis.string;
 
 public interface Hotspot {
-  public String toString();
+  String toString();
 
-  public int index();
+  int index();
 }

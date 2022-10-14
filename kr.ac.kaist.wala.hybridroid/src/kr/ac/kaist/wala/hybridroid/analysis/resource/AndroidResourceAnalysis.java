@@ -20,7 +20,7 @@ import java.util.Set;
 
 public class AndroidResourceAnalysis {
 
-  private static boolean DEBUG = false;
+  private static final boolean DEBUG = false;
 
   // the order is important!! because it is compared using 'startWith'. so longest prefix first.
   private static String[] cpPrefix = {
@@ -34,7 +34,7 @@ public class AndroidResourceAnalysis {
     ".class "
   };
 
-  private String apk;
+  private final String apk;
   private String decompPath;
   private Map<String, Map<Integer, String>> strRes;
   private String dirPath;
@@ -293,10 +293,6 @@ public class AndroidResourceAnalysis {
       vMap = (new SmaliParser()).parseResource(f);
     }
 
-    public String getClassPath() {
-      return classpath;
-    }
-
     public int getResourceValue(String fieldName) {
       if (!vMap.containsKey(fieldName))
         Assertions.UNREACHABLE("the " + fieldName + " is not a member of " + classpath);
@@ -304,7 +300,7 @@ public class AndroidResourceAnalysis {
       return vMap.get(fieldName);
     }
 
-    public boolean isDeclaredResorce(String fieldName) {
+    public boolean isDeclaredResource(String fieldName) {
       return vMap.containsKey(fieldName);
     }
   }
