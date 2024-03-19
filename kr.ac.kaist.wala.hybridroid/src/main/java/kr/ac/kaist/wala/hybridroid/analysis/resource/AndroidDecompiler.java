@@ -55,6 +55,7 @@ public class AndroidDecompiler {
 //			if(res != 0){
 //				throw new InternalError("failed to decompile: " + path);
 //			}
+			// TODO: Fix this. Update the apktool command
 			brut.apktool.Main.main(cmds);
 			if(!SystemUtils.IS_OS_WINDOWS)
 				permission(toPath);
