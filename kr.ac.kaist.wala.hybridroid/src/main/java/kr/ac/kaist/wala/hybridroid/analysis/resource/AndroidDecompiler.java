@@ -10,6 +10,7 @@
 *******************************************************************************/
 package kr.ac.kaist.wala.hybridroid.analysis.resource;
 
+import com.ibm.wala.properties.WalaProperties;
 import org.apache.commons.lang3.SystemUtils;
 
 import java.io.BufferedReader;
@@ -29,34 +30,34 @@ public class AndroidDecompiler {
 			String path = apkFile.getCanonicalPath();
 			String toPath = path.substring(0, path.length()-4);
 			String[] cmds = {"-f", "d", path, "-o", toPath};
-//			String apktool = Shell.walaProperties.getProperty(WalaProperties.ANDROID_APK_TOOL);
-//			File f = new File(apktool);
-//			if(!f.exists() || !f.isFile()){
-//				throw new InternalError("Cannot find APK tool: " + apktool);
-//			}
-//			String[] cmd = {"java", "-jar", apktool, "-f", "d", path, "-o", toPath};
-//			ProcessBuilder pb = new ProcessBuilder();
-//			pb.command(cmd);
-////			System.out.println(pb.command().toString());
-//			Process p = pb.start();
-//			BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
-//			BufferedReader bre = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-//			
-//			String r = null;
-//			while((r = br.readLine()) != null){
-//				System.out.println(r);
-//			}
-//			
-//			while((r = bre.readLine()) != null){
-//				System.err.println(r);
-//			}
-//			
-//			int res = p.waitFor();
-//			if(res != 0){
-//				throw new InternalError("failed to decompile: " + path);
-//			}
+			String apktool = System.getenv("APKTOOL") == null ? System.getenv("APKTOOL") : "/usr/local/bin/apktool";
+			File f = new File(apktool);
+			if(!f.exists() || !f.isFile()){
+				throw new InternalError("Cannot find APK tool: " + apktool);
+			}
+			String[] cmd = {"java", "-jar", apktool, "-f", "d", path, "-o", toPath};
+			ProcessBuilder pb = new ProcessBuilder();
+			pb.command(cmd);
+			System.out.println("Running apktool " + pb.command().toString());
+			Process p = pb.start();
+			BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			BufferedReader bre = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+
+			String r = null;
+			while((r = br.readLine()) != null){
+				System.out.println(r);
+			}
+
+			while((r = bre.readLine()) != null){
+				System.err.println(r);
+			}
+
+			int res = p.waitFor();
+			if(res != 0){
+				throw new InternalError("failed to decompile: " + path);
+			}
 			// TODO: Fix this. Update the apktool command
-			brut.apktool.Main.main(cmds);
+//			brut.apktool.Main.main(cmds);
 			if(!SystemUtils.IS_OS_WINDOWS)
 				permission(toPath);
 			return toPath;

@@ -20,10 +20,10 @@ public class Shell {
     long start = System.currentTimeMillis();
     START = start;
 
-    Driver d = new Driver();
+    kr.ac.kaist.wala.hybridroid.frontend.Driver d = new kr.ac.kaist.wala.hybridroid.frontend.Driver();
 
     Map<File, Set<BridgeInfo>> m = d.analyzeBridgeMapping(args[0], args[1]);
-    JSONOut out = new JSONOut(m);
+    kr.ac.kaist.wala.hybridroid.frontend.JSONOut out = new kr.ac.kaist.wala.hybridroid.frontend.JSONOut(m);
 
     try {
       BufferedWriter bw = new BufferedWriter(new FileWriter(args[2]));

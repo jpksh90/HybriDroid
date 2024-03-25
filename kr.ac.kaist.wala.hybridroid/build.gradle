@@ -8,7 +8,7 @@ repositories {
         url "https://repo.eclipse.org/content/groups/releases/"
     }
 }
-
+//
 //sourceSets {
 //    main(({
 //        java {
@@ -22,7 +22,7 @@ repositories {
 //    }
 //}
 
-//mainClassName = "kr."
+mainClassName = "kr."
 
 jar {
 
@@ -42,7 +42,7 @@ jar {
     }
 }
 
-mainClassName = "kr.ac.kaist.wala.hybridroid.shell.Shell"
+
 
 
 dependencies {
